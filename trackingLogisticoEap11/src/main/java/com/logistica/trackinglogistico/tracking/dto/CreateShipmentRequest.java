@@ -1,13 +1,14 @@
 package com.logistica.trackinglogistico.tracking.dto;
 
-import jakarta.validation.constraints.NotBlank;
+
+import jakarta.validation.constraints.NotNull;
 
 public class CreateShipmentRequest {
 
-    @NotBlank
+    @NotNull
     private int idOperator;
 
-    @NotBlank
+    @NotNull
     private int idPackage;
 
     public CreateShipmentRequest() {
