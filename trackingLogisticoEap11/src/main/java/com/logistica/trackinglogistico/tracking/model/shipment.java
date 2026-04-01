@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "shipments")
+@Table(name = "envio")
 public class shipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "tracking_id", nullable = false, unique = true)
+    @Column(name = "idenvio", nullable = false, unique = true)
     private String trackingId;
 
     @Column(name = "sender_name", nullable = false)
