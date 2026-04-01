@@ -4,39 +4,37 @@ import java.time.LocalDateTime;
 
 public class ShipmentResponse {
 
-    private Long id;
-    private String trackingId;
-    private String senderName;
-    private String receiverName;
+    private int id;
+    private int trackingId;
+    private int idOperator;
+    private int idPackage;
     private String status;
     private LocalDateTime createdAt;
 
-    public ShipmentResponse() {
-    }
-
-    public ShipmentResponse(Long id, String trackingId, String senderName, String receiverName, String status, LocalDateTime createdAt) {
+    public ShipmentResponse(int id, int trackingId, int idOperator, int idPackage, String status, LocalDateTime createdAt) {
         this.id = id;
         this.trackingId = trackingId;
-        this.senderName = senderName;
-        this.receiverName = receiverName;
+        this.idOperator = idOperator;
+        this.idPackage = idPackage;
         this.status = status;
         this.createdAt = createdAt;
     }
 
-    public Long getId() {
+    
+    public int getId() {
         return id;
     }
 
-    public String getTrackingId() {
+    public int getTrackingId() {
         return trackingId;
     }
 
-    public String getSenderName() {
-        return senderName;
+    public int getSenderName() {
+        return idOperator;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public int getReceiverName() {
+        return idPackage;
     }
 
     public String getStatus() {

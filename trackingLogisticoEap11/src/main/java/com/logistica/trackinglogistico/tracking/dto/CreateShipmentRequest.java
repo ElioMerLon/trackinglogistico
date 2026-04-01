@@ -5,28 +5,28 @@ import jakarta.validation.constraints.NotBlank;
 public class CreateShipmentRequest {
 
     @NotBlank
-    private String senderName;
+    private int idOperator;
 
     @NotBlank
-    private String receiverName;
+    private int idPackage;
 
     public CreateShipmentRequest() {
     }
 
-    public String getSenderName() {
-        return senderName;
+    public int getSenderName() {
+        return idOperator;
     }
 
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
+    public void setSenderName(Integer senderName) {
+        this.idOperator = senderName;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public int getReceiverName() {
+        return idPackage;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public void setReceiverName(Integer receiverName) {
+        this.idPackage = receiverName;
     }
 }
 

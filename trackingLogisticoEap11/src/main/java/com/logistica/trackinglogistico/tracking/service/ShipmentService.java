@@ -7,7 +7,7 @@ import com.logistica.trackinglogistico.tracking.repository.ShipmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 @Service
 public class ShipmentService {
@@ -20,9 +20,9 @@ public class ShipmentService {
 
     public ShipmentResponse createShipment(CreateShipmentRequest request) {
         shipment shipment = new shipment();
-        shipment.setTrackingId(generateTrackingId());
-        shipment.setSenderName(request.getSenderName());
-        shipment.setReceiverName(request.getReceiverName());
+        shipment.setTrackingId((int) generateTrackingId());
+        shipment.setIdOperator(request.getSenderName());
+        shipment.setIdPackage((int) request.getReceiverName());
         shipment.setStatus("REGISTERED");
         shipment.setCreatedAt(LocalDateTime.now());
 
@@ -31,8 +31,8 @@ public class ShipmentService {
         return new ShipmentResponse(
                 savedShipment.getId(),
                 savedShipment.getTrackingId(),
-                savedShipment.getSenderName(),
-                savedShipment.getReceiverName(),
+                savedShipment.getIdOperator(),
+                savedShipment.getIdPackage(),
                 savedShipment.getStatus(),
                 savedShipment.getCreatedAt()
         );
@@ -45,18 +45,16 @@ public class ShipmentService {
         return new ShipmentResponse(
                 shipment.getId(),
                 shipment.getTrackingId(),
-                shipment.getSenderName(),
-                shipment.getReceiverName(),
+                shipment.getIdOperator(),
+                shipment.getIdPackage(),
                 shipment.getStatus(),
                 shipment.getCreatedAt()
         );
     }
 
-    private String generateTrackingId() {
-        return UUID.randomUUID()
-                .toString()
-                .replace("-", "")
-                .substring(0, 12)
-                .toUpperCase();
-    }
+    private long generateTrackingId() {
+    long timestamp = System.currentTimeMillis();
+    int random = new java.util.Random().nextInt(1000);
+    return Long.parseLong(timestamp + "" + random);
+}
 }

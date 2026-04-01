@@ -8,53 +8,53 @@ import java.time.LocalDateTime;
 public class shipment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "idenvio")
+    private int id;
 
-    @Column(name = "idenvio", nullable = false, unique = true)
-    private String trackingId;
+    @Column(name = "numseguimiento", nullable = false, unique = true)
+    private int trackingId;
 
-    @Column(name = "sender_name", nullable = false)
-    private String senderName;
+    @Column(name = "idoperador", nullable = false)
+    private int idOperator;
 
-    @Column(name = "receiver_name", nullable = false)
-    private String receiverName;
+    @Column(name = "idpaquete", nullable = false)
+    private int idPackage;
 
-    @Column(nullable = false)
+    @Column(name = "estado", nullable = false)
     private String status;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "fecharegistro", nullable = false)
     private LocalDateTime createdAt;
 
     public shipment() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public String getTrackingId() {
+    public int getTrackingId() {
         return trackingId;
     }
 
-    public void setTrackingId(String trackingId) {
+    public void setTrackingId(int trackingId) {
         this.trackingId = trackingId;
     }
 
-    public String getSenderName() {
-        return senderName;
+    public int getIdOperator() {
+        return idOperator;
     }
 
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
+    public void setIdOperator(int idOperator) {
+        this.idOperator = idOperator;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public int getIdPackage() {
+        return idPackage;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public void setIdPackage(int idPackage) {
+        this.idPackage = idPackage;
     }
 
     public String getStatus() {
