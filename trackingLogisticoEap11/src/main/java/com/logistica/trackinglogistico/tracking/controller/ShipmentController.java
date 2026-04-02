@@ -1,7 +1,8 @@
 package com.logistica.trackinglogistico.tracking.controller;
 
-import com.logistica.trackinglogistico.tracking.dto.CreateShipmentRequest;
+import com.logistica.trackinglogistico.tracking.dto.RegisterShipmentRequest;
 import com.logistica.trackinglogistico.tracking.dto.ShipmentResponse;
+import com.logistica.trackinglogistico.tracking.dto.StatusUpdateRequest;
 import com.logistica.trackinglogistico.tracking.model.Shipment;
 import com.logistica.trackinglogistico.tracking.service.ShipmentService;
 import jakarta.validation.Valid;
@@ -35,9 +36,17 @@ public class ShipmentController {
         return shipmentService.getShipmentByTrackingId(trackingId);
     }
 
-    @PostMapping
+    @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public ShipmentResponse createShipment(@Valid @RequestBody CreateShipmentRequest request) {
-        return shipmentService.createShipment(request);
+    public ShipmentResponse registerShipment(@Valid @RequestBody RegisterShipmentRequest request) {
+        return shipmentService.registerShipment(request);
+    }
+
+    @PatchMapping("/{trackingId}/status")
+    public ShipmentResponse updateStatus(
+            @PathVariable Integer trackingId,
+            @Valid @RequestBody StatusUpdateRequest request
+    ) {
+        return shipmentService.updateStatus(trackingId, request);
     }
 }

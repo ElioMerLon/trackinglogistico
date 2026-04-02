@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Operator {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idoperador")
     private Integer idOperador;
 

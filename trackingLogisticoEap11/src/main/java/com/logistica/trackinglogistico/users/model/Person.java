@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Person {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpersona")
     private Integer idPersona;
 
@@ -17,7 +18,7 @@ public class Person {
     private String direccion;
 
     @Column(name = "telefono", nullable = false)
-    private Integer telefono;
+    private Long telefono;
 
     public Person() {
     }
@@ -46,11 +47,11 @@ public class Person {
         this.direccion = direccion;
     }
 
-    public Integer getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 }

@@ -1,26 +1,14 @@
 package com.logistica.trackinglogistico.users.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public class CreateOperatorRequest {
-
-    @NotNull
-    private Integer idOperator;
 
     @NotBlank
     private String nombre;
 
     @NotBlank
     private String usuario;
-
-    public Integer getIdOperator() {
-        return idOperator;
-    }
-
-    public void setIdOperator(Integer idOperator) {
-        this.idOperator = idOperator;
-    }
 
     public String getNombre() {
         return nombre;

@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 public class Package {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpaquete")
     private Integer idPaquete;
 

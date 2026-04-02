@@ -15,19 +15,20 @@ public class Shipment {
     @Column(name = "idenvio")
     private Integer id;
 
-    @Column(name = "numseguimiento", unique = true)
+    @Column(name = "numseguimiento", nullable = false, unique = true)
     private Integer trackingId;
 
     @ManyToOne
-    @JoinColumn(name = "idoperador")
+    @JoinColumn(name = "idoperador", nullable = false)
     private Operator operador;
 
     @ManyToOne
-    @JoinColumn(name = "idpaquete")
+    @JoinColumn(name = "idpaquete", nullable = false)
     private Package paquete;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
-    private String status;
+    private ShipmentStatus status;
 
     @Column(name = "fecharegistro", nullable = false)
     private LocalDateTime createdAt;
@@ -47,27 +48,27 @@ public class Shipment {
         this.trackingId = trackingId;
     }
 
-    public Operator getIdOperator() {
+    public Operator getOperador() {
         return operador;
     }
 
-    public void setIdOperator(Operator operador) {
+    public void setOperador(Operator operador) {
         this.operador = operador;
     }
 
-    public Package getIdPackage() {
+    public Package getPaquete() {
         return paquete;
     }
 
-    public void setIdPackage(Package paquete) {
+    public void setPaquete(Package paquete) {
         this.paquete = paquete;
     }
 
-    public String getStatus() {
+    public ShipmentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ShipmentStatus status) {
         this.status = status;
     }
 

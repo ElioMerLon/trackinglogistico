@@ -5,9 +5,6 @@ import jakarta.validation.constraints.NotNull;
 public class CreatePackageRequest {
 
     @NotNull
-    private Integer idPackage;
-
-    @NotNull
     private Integer idRemitente;
 
     @NotNull
@@ -15,14 +12,6 @@ public class CreatePackageRequest {
 
     @NotNull
     private Double peso;
-
-    public Integer getIdPackage() {
-        return idPackage;
-    }
-
-    public void setIdPackage(Integer idPackage) {
-        this.idPackage = idPackage;
-    }
 
     public Integer getIdRemitente() {
         return idRemitente;
