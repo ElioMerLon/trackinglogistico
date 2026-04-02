@@ -5,20 +5,21 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "envio")
-public class shipment {
+public class Shipment {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idenvio")
-    private int id;
+    private Integer id;
 
     @Column(name = "numseguimiento", nullable = false, unique = true)
-    private int trackingId;
+    private Integer trackingId;
 
     @Column(name = "idoperador", nullable = false)
-    private int idOperator;
+    private Integer idOperator;
 
     @Column(name = "idpaquete", nullable = false)
-    private int idPackage;
+    private Integer idPackage;
 
     @Column(name = "estado", nullable = false)
     private String status;
@@ -26,34 +27,34 @@ public class shipment {
     @Column(name = "fecharegistro", nullable = false)
     private LocalDateTime createdAt;
 
-    public shipment() {
+    public Shipment() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getTrackingId() {
+    public Integer getTrackingId() {
         return trackingId;
     }
 
-    public void setTrackingId(int trackingId) {
+    public void setTrackingId(Integer trackingId) {
         this.trackingId = trackingId;
     }
 
-    public int getIdOperator() {
+    public Integer getIdOperator() {
         return idOperator;
     }
 
-    public void setIdOperator(int idOperator) {
+    public void setIdOperator(Integer idOperator) {
         this.idOperator = idOperator;
     }
 
-    public int getIdPackage() {
+    public Integer getIdPackage() {
         return idPackage;
     }
 
-    public void setIdPackage(int idPackage) {
+    public void setIdPackage(Integer idPackage) {
         this.idPackage = idPackage;
     }
 

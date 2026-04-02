@@ -2,12 +2,13 @@ package com.logistica.trackinglogistico.tracking.service;
 
 import com.logistica.trackinglogistico.tracking.dto.CreateShipmentRequest;
 import com.logistica.trackinglogistico.tracking.dto.ShipmentResponse;
-import com.logistica.trackinglogistico.tracking.model.shipment;
+import com.logistica.trackinglogistico.tracking.model.Shipment;
 import com.logistica.trackinglogistico.tracking.repository.ShipmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-
+import java.util.List;
+import java.util.Random;
 
 @Service
 public class ShipmentService {
@@ -19,14 +20,14 @@ public class ShipmentService {
     }
 
     public ShipmentResponse createShipment(CreateShipmentRequest request) {
-        shipment shipment = new shipment();
-        shipment.setTrackingId((int) generateTrackingId());
-        shipment.setIdOperator(request.getSenderName());
-        shipment.setIdPackage((int) request.getReceiverName());
+        Shipment shipment = new Shipment();
+        shipment.setTrackingId(generateTrackingId());
+        shipment.setIdOperator(request.getIdOperator());
+        shipment.setIdPackage(request.getIdPackage());
         shipment.setStatus("REGISTERED");
         shipment.setCreatedAt(LocalDateTime.now());
 
-        shipment savedShipment = shipmentRepository.save(shipment);
+        Shipment savedShipment = shipmentRepository.save(shipment);
 
         return new ShipmentResponse(
                 savedShipment.getId(),
@@ -38,8 +39,8 @@ public class ShipmentService {
         );
     }
 
-    public ShipmentResponse getShipmentByTrackingId(String trackingId) {
-        shipment shipment = shipmentRepository.findByTrackingId(trackingId)
+    public ShipmentResponse getShipmentByTrackingId(Integer trackingId) {
+        Shipment shipment = shipmentRepository.findByTrackingId(trackingId)
                 .orElseThrow(() -> new RuntimeException("No se encontró el envío con trackingId: " + trackingId));
 
         return new ShipmentResponse(
@@ -52,9 +53,11 @@ public class ShipmentService {
         );
     }
 
-    private long generateTrackingId() {
-    long timestamp = System.currentTimeMillis();
-    int random = new java.util.Random().nextInt(1000);
-    return Long.parseLong(timestamp + "" + random);
-}
+    private Integer generateTrackingId() {
+        return 100000 + new Random().nextInt(900000);
+    }
+
+    public List<Shipment> getAllShipments() {
+        return shipmentRepository.findAll();
+    }
 }

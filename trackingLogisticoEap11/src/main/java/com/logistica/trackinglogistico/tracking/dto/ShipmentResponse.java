@@ -29,11 +29,11 @@ public class ShipmentResponse {
         return trackingId;
     }
 
-    public int getSenderName() {
+    public int getIdOperator() {
         return idOperator;
     }
 
-    public int getReceiverName() {
+    public int getIdPackage() {
         return idPackage;
     }
 

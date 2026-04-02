@@ -14,20 +14,20 @@ public class CreateShipmentRequest {
     public CreateShipmentRequest() {
     }
 
-    public int getSenderName() {
+    public int getIdOperator() {
         return idOperator;
     }
 
-    public void setSenderName(Integer senderName) {
-        this.idOperator = senderName;
+    public void setIdOperator(Integer idOperator) {
+        this.idOperator = idOperator;
     }
 
-    public int getReceiverName() {
+    public int getIdPackage() {
         return idPackage;
     }
 
-    public void setReceiverName(Integer receiverName) {
-        this.idPackage = receiverName;
+    public void setIdPackage(Integer idPackage) {
+        this.idPackage = idPackage;
     }
 }
 
