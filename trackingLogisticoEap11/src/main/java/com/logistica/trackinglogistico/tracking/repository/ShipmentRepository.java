@@ -8,3 +8,4 @@ import java.util.Optional;
 public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     Optional<Shipment> findByTrackingId(Integer trackingId);
 }
+

@@ -1,6 +1,9 @@
 package com.logistica.trackinglogistico.tracking.model;
 
+import com.logistica.trackinglogistico.orders.model.Package;
+import com.logistica.trackinglogistico.users.model.Operator;
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,14 +15,16 @@ public class Shipment {
     @Column(name = "idenvio")
     private Integer id;
 
-    @Column(name = "numseguimiento", nullable = false, unique = true)
+    @Column(name = "numseguimiento", unique = true)
     private Integer trackingId;
 
-    @Column(name = "idoperador", nullable = false)
-    private Integer idOperator;
+    @ManyToOne
+    @JoinColumn(name = "idoperador")
+    private Operator operador;
 
-    @Column(name = "idpaquete", nullable = false)
-    private Integer idPackage;
+    @ManyToOne
+    @JoinColumn(name = "idpaquete")
+    private Package paquete;
 
     @Column(name = "estado", nullable = false)
     private String status;
@@ -42,20 +47,20 @@ public class Shipment {
         this.trackingId = trackingId;
     }
 
-    public Integer getIdOperator() {
-        return idOperator;
+    public Operator getIdOperator() {
+        return operador;
     }
 
-    public void setIdOperator(Integer idOperator) {
-        this.idOperator = idOperator;
+    public void setIdOperator(Operator operador) {
+        this.operador = operador;
     }
 
-    public Integer getIdPackage() {
-        return idPackage;
+    public Package getIdPackage() {
+        return paquete;
     }
 
-    public void setIdPackage(Integer idPackage) {
-        this.idPackage = idPackage;
+    public void setIdPackage(Package paquete) {
+        this.paquete = paquete;
     }
 
     public String getStatus() {
